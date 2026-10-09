@@ -1,0 +1,654 @@
+
+:root {
+  --navy-950: #050b18;
+  --navy-900: #0a1428;
+  --navy-800: #0e1c36;
+  --cyan-400: #4fd8ff;
+  --cyan-300: #7ee8ff;
+  --blue-500: #2f7bff;
+  --blue-600: #1a5ce0;
+  --green-400: #3ddc97;
+  --amber-400: #ffb648;
+  --red-400: #ff6b6b;
+  --ink-100: #eaf3ff;
+  --ink-300: #b7c8e0;
+  --ink-500: #7488a8;
+  --line: rgba(255, 255, 255, 0.10);
+  --glass: rgba(14, 28, 54, 0.55);
+}
+
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================
+   BODY + BACKGROUND
+========================================= */
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background:
+        linear-gradient(
+            rgba(5, 15, 35, 0.55),
+            rgba(5, 15, 35, 0.65)
+        ),
+        url("background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    min-height: 100vh;
+}
+
+/* =========================================
+   TOPBAR
+========================================= */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 36px;
+
+  border-bottom: 1px solid var(--line);
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background: rgba(5, 11, 24, 0.75);
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+
+  border-radius: 10px;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 18px rgba(79, 216, 255, 0.30);
+
+  padding: 3px;
+
+  overflow: hidden;
+}
+
+.brand-icon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.brand-text .title {
+  font-size: 18px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  line-height: 1.1;
+}
+
+.brand-text .subtitle {
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  color: var(--cyan-300);
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   BACK LINK
+========================================= */
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: var(--ink-300);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  padding: 8px 14px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 8px;
+}
+
+.back-link:hover {
+  color: var(--cyan-300);
+
+  border-color: rgba(79, 216, 255, 0.35);
+}
+
+.back-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 32px 24px 60px;
+}
+
+.page-head {
+  margin-bottom: 24px;
+  
+}
+
+.page-head h1 {
+  margin: 0 0 4px;
+  color: #eaf3ff;
+
+  font-size: 24px;
+
+  font-weight: 800;
+}
+
+.page-head p {
+  margin: 0;
+
+  color: white;
+
+  font-size: 13.5px;
+}
+
+
+/* =========================================
+   FORM PANEL
+========================================= */
+
+.form-panel {
+  background: var(--glass);
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  padding: 32px;
+}
+
+.form-section-title {
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+
+  color: var(--cyan-300);
+
+  margin: 0 0 18px;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.form-section-title:not(:first-child) {
+  margin-top: 30px;
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 22px 20px;
+}
+
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   FLOATING LABEL FIELDS
+========================================= */
+
+.field {
+  position: relative;
+}
+
+.field input,
+.field select {
+  width: 100%;
+
+  padding: 16px 14px 8px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid var(--line);
+
+  border-radius: 10px;
+
+  color: var(--ink-100);
+
+  font-size: 14px;
+
+  outline: none;
+
+  appearance: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.field input::placeholder {
+  color: transparent;
+}
+
+.field label {
+  position: absolute;
+
+  left: 14px;
+
+  top: 16px;
+
+  font-size: 14px;
+
+  color: var(--ink-500);
+
+  pointer-events: none;
+
+  transition: all 0.15s ease;
+
+  background: transparent;
+}
+
+
+/* =========================================
+   INPUT FOCUS
+========================================= */
+
+.field input:focus,
+.field input:not(:placeholder-shown),
+.field select:focus,
+.field select.has-value {
+  border-color: var(--cyan-400);
+
+  box-shadow:
+    0 0 0 3px rgba(79, 216, 255, 0.12);
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field select:focus ~ label,
+.field select.has-value ~ label {
+  top: 6px;
+
+  font-size: 10.5px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  color: var(--cyan-300);
+
+  text-transform: uppercase;
+}
+
+.field input:focus,
+.field input:not(:placeholder-shown) {
+  padding-top: 20px;
+
+  padding-bottom: 4px;
+}
+
+
+/* =========================================
+   SELECT
+========================================= */
+
+.field select {
+  padding-top: 16px;
+
+  cursor: pointer;
+
+  color: var(--ink-500);
+}
+
+.field select.has-value {
+  color: var(--ink-100);
+
+  padding-top: 20px;
+
+  padding-bottom: 4px;
+}
+
+.field .chevron {
+  position: absolute;
+
+  right: 14px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 14px;
+
+  height: 14px;
+
+  stroke: var(--ink-500);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   HINT
+========================================= */
+
+.field .hint {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 11px;
+
+  color: var(--ink-500);
+}
+
+.field .hint.error {
+  color: var(--red-400);
+}
+
+.field.invalid input {
+  border-color: var(--red-400);
+
+  box-shadow:
+    0 0 0 3px rgba(255, 107, 107, 0.12);
+}
+
+
+/* =========================================
+   STATUS PREVIEW
+========================================= */
+
+.status-preview {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 8px;
+
+  font-size: 11.5px;
+
+  font-weight: 700;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+}
+
+.status-preview::before {
+  content: "";
+
+  width: 6px;
+
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+.status-preview.active {
+  color: var(--green-400);
+
+  background: rgba(61, 220, 151, 0.10);
+}
+
+.status-preview.maintenance {
+  color: var(--amber-400);
+
+  background: rgba(255, 182, 72, 0.10);
+}
+
+.status-preview.offline {
+  color: var(--red-400);
+
+  background: rgba(255, 107, 107, 0.10);
+}
+
+.status-preview.hidden {
+  display: none;
+}
+
+
+/* =========================================
+   FORM ACTIONS
+========================================= */
+
+.form-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 32px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid var(--line);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn {
+  padding: 12px 24px;
+
+  border-radius: 10px;
+
+  font-size: 13.5px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  border: 1px solid var(--line);
+
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.12s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+
+  color: var(--ink-300);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-primary {
+  border: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--blue-600),
+      var(--cyan-400)
+    );
+
+  color: #04101f;
+
+  box-shadow:
+    0 8px 22px rgba(47, 123, 255, 0.35);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 10px 26px rgba(47, 123, 255, 0.5);
+}
+
+.btn-primary svg {
+  width: 15px;
+
+  height: 15px;
+}
+
+
+/* =========================================
+   SUCCESS TOAST
+========================================= */
+
+.toast {
+  position: fixed;
+
+  top: 24px;
+
+  right: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  background: var(--navy-800);
+
+  border: 1px solid rgba(61, 220, 151, 0.35);
+
+  color: var(--ink-100);
+
+  padding: 14px 18px;
+
+  border-radius: 10px;
+
+  font-size: 13.5px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.4);
+
+  transform: translateX(140%);
+
+  transition: transform 0.3s ease;
+
+  z-index: 100;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast svg {
+  width: 18px;
+
+  height: 18px;
+
+  stroke: var(--green-400);
+
+  flex: 0 0 auto;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    padding: 24px 16px 50px;
+  }
+
+  .form-panel {
+    padding: 22px;
+  }
+
+  .topbar {
+    padding: 14px 18px;
+  }
+
+}
+

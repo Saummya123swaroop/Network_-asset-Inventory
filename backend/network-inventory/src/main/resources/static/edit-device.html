@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Device | DVC Network Asset Inventory</title>
+
+    <link rel="stylesheet" href="edit-device.css">
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <img src="dvc-logo.png" alt="DVC logo">
+            </div>
+
+            <div class="brand-text">
+                <div class="title">UPDATE DEVICE</div>
+            </div>
+
+        </div>
+
+        <a href="dashboard.html" class="back-link">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+
+                <path d="M19 12H5"/>
+                <path d="M12 19l-7-7 7-7"/>
+
+            </svg>
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- PAGE CONTENT -->
+
+    <div class="content">
+
+        <div class="page-head">
+
+            <div>
+
+                <h1>Edit Device</h1>
+
+                <p>
+                    Select a device, update its details, and save the changes
+                </p>
+
+            </div>
+
+            <a href="add-device.html" class="add-new-btn">
+
+                <svg viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="M12 5v14"/>
+                    <path d="M5 12h14"/>
+
+                </svg>
+
+                Add New Device
+
+            </a>
+
+        </div>
+
+
+        <!-- DEVICE SELECTOR -->
+
+        <div class="picker-panel">
+
+            <label for="devicePicker">
+                Select Device to Edit
+            </label>
+
+            <div class="picker-wrap">
+
+                <select id="devicePicker"
+                        class="picker-select">
+
+                    <option value="">
+                        Loading devices...
+                    </option>
+
+                </select>
+
+                <svg class="chevron"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+
+                    <path d="m6 9 6 6 6-6"/>
+
+                </svg>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHANGE MESSAGE -->
+
+        <div class="change-banner" id="changeBanner">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+
+                <path d="M12 20h9"/>
+                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+
+            </svg>
+
+            <span id="changeBannerText"></span>
+
+        </div>
+
+
+        <!-- EDIT FORM -->
+
+        <form class="form-panel"
+              id="editDeviceForm">
+
+            <!-- DEVICE IDENTITY -->
+
+            <div class="form-section-title">
+                Device Identity
+            </div>
+
+            <div class="form-grid">
+
+
+                <!-- DEVICE NAME -->
+
+                <div class="field">
+
+                    <input type="text"
+                           id="deviceName"
+                           placeholder=" "
+                           required>
+
+                    <label for="deviceName">
+                        Device Name
+                    </label>
+
+                </div>
+
+
+                <!-- DEVICE TYPE -->
+
+                <div class="field">
+
+                    <select id="deviceType"
+                            required>
+
+                        <option value="Router">
+                            Router
+                        </option>
+
+                        <option value="Switch">
+                            Switch
+                        </option>
+
+                        <option value="Firewall">
+                            Firewall
+                        </option>
+
+                        <option value="Server">
+                            Server
+                        </option>
+
+                        <option value="PLC">
+                            PLC
+                        </option>
+
+                        <option value="Access Point">
+                            Access Point
+                        </option>
+
+                    </select>
+
+                    <label for="deviceType">
+                        Device Type
+                    </label>
+
+                    <svg class="chevron"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="m6 9 6 6 6-6"/>
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+            <!-- NETWORK DETAILS -->
+
+            <div class="form-section-title">
+                Network Details
+            </div>
+
+            <div class="form-grid">
+
+
+                <!-- IP ADDRESS -->
+
+                <div class="field">
+
+                    <input type="text"
+                           id="ipAddress"
+                           placeholder=" "
+                           required>
+
+                    <label for="ipAddress">
+                        IP Address
+                    </label>
+
+                </div>
+
+
+                <!-- MAC ADDRESS -->
+
+                <div class="field">
+
+                    <input type="text"
+                           id="macAddress"
+                           placeholder=" "
+                           maxlength="17"
+                           required>
+
+                    <label for="macAddress">
+                        MAC Address
+                    </label>
+
+                    <span class="hint">
+                        XX:XX:XX:XX:XX:XX
+                    </span>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="field full">
+
+                    <input type="text"
+                           id="location"
+                           placeholder=" "
+                           required>
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <div class="form-section-title">
+                Status &amp; Maintenance
+            </div>
+
+            <div class="form-grid">
+
+
+                <!-- MAINTENANCE DATE -->
+
+                <div class="field">
+
+                    <input type="date"
+                           id="maintenanceDate">
+
+                    <label for="maintenanceDate">
+                        Last Maintenance Date
+                    </label>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="field">
+
+                    <select id="status"
+                            required>
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Maintenance">
+                            Under Maintenance
+                        </option>
+
+                        <option value="Offline">
+                            Offline
+                        </option>
+
+                    </select>
+
+                    <label for="status">
+                        Status
+                    </label>
+
+                    <svg class="chevron"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round">
+
+                        <path d="m6 9 6 6 6-6"/>
+
+                    </svg>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-actions">
+
+                <button type="button"
+                        class="btn btn-danger"
+                        id="deleteBtn">
+
+                    Delete Device
+
+                </button>
+
+
+                <div class="right-actions">
+
+                    <button type="button"
+                            class="btn btn-secondary"
+                            id="revertBtn">
+
+                        Revert Changes
+
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- DELETE MODAL -->
+
+    <div class="modal-overlay"
+         id="deleteModal">
+
+        <div class="modal">
+
+            <div class="modal-icon">
+                ⚠
+            </div>
+
+            <h3>
+                Delete this device?
+            </h3>
+
+            <p>
+                This will permanently remove
+                <strong id="deleteDeviceName">
+                    this device
+                </strong>
+                from the inventory.
+            </p>
+
+            <div class="modal-actions">
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        id="cancelDeleteBtn">
+
+                    Cancel
+
+                </button>
+
+                <button type="button"
+                        class="btn btn-danger"
+                        id="confirmDeleteBtn">
+
+                    Yes, Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div class="toast"
+         id="toast">
+
+        <span id="toastText">
+            Device updated successfully
+        </span>
+
+    </div>
+
+
+    <script src="edit-device.js"></script>
+
+</body>
+</html>
+```

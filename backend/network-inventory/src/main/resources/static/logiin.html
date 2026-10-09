@@ -1,0 +1,693 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DVC Network Asset Inventory - Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(5, 15, 35, 0.72),
+                    rgba(5, 15, 35, 0.82)
+                ),
+                url("b2.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+        }
+
+        .login-container {
+            width: 390px;
+            padding: 35px;
+
+            background: rgba(10, 20, 40, 0.88);
+
+            border: 1px solid rgba(79, 216, 255, 0.25);
+            border-radius: 18px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45),
+                0 0 30px rgba(79, 216, 255, 0.08);
+
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 85px;
+            height: 85px;
+
+            object-fit: contain;
+
+            background: white;
+            padding: 6px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 0 20px rgba(79, 216, 255, 0.25);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #4fd8ff;
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            margin-bottom: 30px;
+        }
+
+        .error-message {
+            background: rgba(255, 107, 107, 0.12);
+            border: 1px solid rgba(255, 107, 107, 0.35);
+
+            color: #ff8b8b;
+
+            padding: 10px;
+            border-radius: 8px;
+
+            font-size: 13px;
+            text-align: center;
+
+            margin-bottom: 18px;
+        }
+
+        .success-message {
+            background: rgba(61, 220, 151, 0.12);
+            border: 1px solid rgba(61, 220, 151, 0.35);
+
+            color: #3ddc97;
+
+            padding: 10px;
+            border-radius: 8px;
+
+            font-size: 13px;
+            text-align: center;
+
+            margin-bottom: 18px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+
+            color: #b7c8e0;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+        .field input {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border-radius: 9px;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            background: rgba(255, 255, 255, 0.05);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        .field input:focus {
+            border-color: #4fd8ff;
+
+            box-shadow:
+                0 0 0 2px rgba(79, 216, 255, 0.10);
+        }
+
+        .field input::placeholder {
+            color: #7488a8;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+            border-radius: 9px;
+
+            background: linear-gradient(
+                135deg,
+                #1a5ce0,
+                #2f7bff
+            );
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 5px;
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 8px 20px rgba(47, 123, 255, 0.25);
+        }
+
+        .register-area {
+            text-align: center;
+
+            margin-top: 22px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+            color: #7488a8;
+
+            font-size: 13px;
+        }
+
+        .register-area a {
+            color: #4fd8ff;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .register-area a:hover {
+            text-decoration: underline;
+        }
+
+        .register-form {
+            display: none;
+        }
+
+        .back-login {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            color: #4fd8ff;
+
+            font-size: 13px;
+
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #7488a8;
+
+            font-size: 10px;
+
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <!-- ================= LOGIN SECTION ================= -->
+
+        <div id="loginSection">
+
+            <div class="logo">
+                <img src="dvc-logo.png" alt="DVC Logo">
+            </div>
+
+            <div class="title">
+                Network Asset Inventory
+            </div>
+
+            <div class="subtitle">
+                DVC Power Plant
+            </div>
+
+
+            <!-- Login error -->
+
+            <div
+                id="loginError"
+                class="error-message"
+                style="display:none;"
+            >
+                Invalid username or password.
+            </div>
+
+
+            <form
+                action="/login"
+                method="post"
+            >
+
+                <div class="field">
+
+                    <label for="loginUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="loginUsername"
+                        name="username"
+                        placeholder="Enter username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div class="register-area">
+
+                Don't have an account?
+
+                <a onclick="showRegister()">
+                    Register
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= REGISTER SECTION ================= -->
+
+        <div
+            id="registerSection"
+            class="register-form"
+        >
+
+            <div class="logo">
+                <img src="dvc-logo.png" alt="DVC Logo">
+            </div>
+
+            <div class="title">
+                Create Account
+            </div>
+
+            <div class="subtitle">
+                Network Asset Inventory
+            </div>
+
+
+            <div
+                id="registerMessage"
+                style="display:none;"
+            ></div>
+
+
+            <form id="registerForm">
+
+                <div class="field">
+
+                    <label for="registerUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        placeholder="Choose a username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="registerPassword"
+                        placeholder="Choose a password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+                    Register
+                </button>
+
+            </form>
+
+
+            <span
+                class="back-login"
+                onclick="showLogin()"
+            >
+                ← Back to Login
+            </span>
+
+        </div>
+
+
+        <div class="footer">
+            Network Asset Inventory & Documentation System
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // ==========================================
+        // SHOW REGISTER
+        // ==========================================
+
+        function showRegister() {
+
+            document.getElementById(
+                "loginSection"
+            ).style.display = "none";
+
+            document.getElementById(
+                "registerSection"
+            ).style.display = "block";
+        }
+
+
+        // ==========================================
+        // SHOW LOGIN
+        // ==========================================
+
+        function showLogin() {
+
+            document.getElementById(
+                "registerSection"
+            ).style.display = "none";
+
+            document.getElementById(
+                "loginSection"
+            ).style.display = "block";
+        }
+
+
+        // ==========================================
+        // CHECK LOGIN ERROR
+        // ==========================================
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        if (params.get("error") === "true") {
+
+            document.getElementById(
+                "loginError"
+            ).style.display = "block";
+        }
+
+
+        // ==========================================
+        // REGISTER USER
+        // ==========================================
+
+        document
+            .getElementById("registerForm")
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    const username =
+                        document
+                            .getElementById(
+                                "registerUsername"
+                            )
+                            .value
+                            .trim();
+
+
+                    const password =
+                        document
+                            .getElementById(
+                                "registerPassword"
+                            )
+                            .value;
+
+
+                    const confirmPassword =
+                        document
+                            .getElementById(
+                                "confirmPassword"
+                            )
+                            .value;
+
+
+                    const message =
+                        document.getElementById(
+                            "registerMessage"
+                        );
+
+
+                    // Check password
+
+                    if (
+                        password !==
+                        confirmPassword
+                    ) {
+
+                        message.style.display =
+                            "block";
+
+                        message.className =
+                            "error-message";
+
+                        message.textContent =
+                            "Passwords do not match.";
+
+                        return;
+                    }
+
+
+                    if (
+                        username.length < 3
+                    ) {
+
+                        message.style.display =
+                            "block";
+
+                        message.className =
+                            "error-message";
+
+                        message.textContent =
+                            "Username must contain at least 3 characters.";
+
+                        return;
+                    }
+
+
+                    if (
+                        password.length < 6
+                    ) {
+
+                        message.style.display =
+                            "block";
+
+                        message.className =
+                            "error-message";
+
+                        message.textContent =
+                            "Password must contain at least 6 characters.";
+
+                        return;
+                    }
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                "/api/auth/register",
+                                {
+
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body:
+                                        JSON.stringify({
+                                            username:
+                                                username,
+
+                                            password:
+                                                password
+                                        })
+                                }
+                            );
+
+
+                        const result =
+                            await response.text();
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                result ||
+                                "Registration failed."
+                            );
+                        }
+
+
+                        message.style.display =
+                            "block";
+
+                        message.className =
+                            "success-message";
+
+                        message.textContent =
+                            "Registration successful! You can now login.";
+
+
+                        document
+                            .getElementById(
+                                "registerForm"
+                            )
+                            .reset();
+
+
+                        setTimeout(
+                            showLogin,
+                            1500
+                        );
+
+                    }
+
+                    catch (error) {
+
+                        message.style.display =
+                            "block";
+
+                        message.className =
+                            "error-message";
+
+                        message.textContent =
+                            error.message;
+                    }
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
+```

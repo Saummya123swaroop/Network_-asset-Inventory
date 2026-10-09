@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | DVC Network Asset Inventory</title>
+
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+    <!-- Background overlay -->
+    <div class="background-overlay"></div>
+
+    <!-- Main container -->
+    <div class="register-container">
+
+        <!-- Logo -->
+        <div class="logo-section">
+
+            <div class="logo-box">
+                <img src="dvc-logo.png" alt="DVC Logo">
+            </div>
+
+            <h1>DVC</h1>
+
+            <p>NETWORK ASSET INVENTORY</p>
+
+        </div>
+
+
+        <!-- Register Card -->
+        <div class="register-card">
+
+            <div class="card-header">
+
+                <h2>Create Account</h2>
+
+                <p>
+                    Register to access the network asset inventory
+                </p>
+
+            </div>
+
+
+            <!-- Register Form -->
+            <form id="registerForm">
+
+                <!-- Username -->
+                <div class="input-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Confirm Password -->
+                <div class="input-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Message -->
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+
+                <!-- Register Button -->
+                <button
+                    type="submit"
+                    class="register-btn"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <!-- Login link -->
+            <div class="login-link">
+
+                Already have an account?
+
+                <a href="logiin.html">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <div class="footer">
+
+            <span>
+                Network Asset Inventory & Documentation System
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <script src="register.js"></script>
+
+</body>
+</html>

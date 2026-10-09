@@ -1,0 +1,462 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search Device | DVC Network Asset Inventory</title>
+
+    <link rel="stylesheet" href="/search-device.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         BACKGROUND SCENE
+    ========================================== -->
+
+    <div class="scene">
+
+        <svg viewBox="0 0 1440 900"
+             preserveAspectRatio="xMidYMid slice">
+
+            <defs>
+
+                <linearGradient
+                    id="gridLine"
+                    x1="0"
+                    y1="0"
+                    x2="1"
+                    y2="0">
+
+                    <stop
+                        offset="0%"
+                        stop-color="#4fd8ff"
+                        stop-opacity="0">
+                    </stop>
+
+                    <stop
+                        offset="50%"
+                        stop-color="#4fd8ff"
+                        stop-opacity="0.5">
+                    </stop>
+
+                    <stop
+                        offset="100%"
+                        stop-color="#4fd8ff"
+                        stop-opacity="0">
+                    </stop>
+
+                </linearGradient>
+
+            </defs>
+
+
+            <!-- Cooling towers -->
+
+            <g
+                stroke="#1c3660"
+                stroke-width="2"
+                fill="none"
+                opacity="0.7">
+
+                <path d="M120 900 L160 620 L200 900"/>
+                <path d="M100 700 L220 700"/>
+                <path d="M110 650 L210 650"/>
+                <path d="M90 750 L230 750"/>
+
+                <path d="M1240 900 L1280 600 L1320 900"/>
+                <path d="M1215 680 L1345 680"/>
+                <path d="M1225 630 L1335 630"/>
+
+            </g>
+
+
+            <!-- Horizontal network/grid lines -->
+
+            <g
+                stroke="url(#gridLine)"
+                stroke-width="1.5">
+
+                <line
+                    x1="0"
+                    y1="640"
+                    x2="1440"
+                    y2="660"/>
+
+                <line
+                    x1="0"
+                    y1="700"
+                    x2="1440"
+                    y2="715"/>
+
+                <line
+                    x1="0"
+                    y1="760"
+                    x2="1440"
+                    y2="770"/>
+
+            </g>
+
+
+            <!-- Industrial buildings -->
+
+            <g
+                fill="#0e1c36"
+                opacity="0.8">
+
+                <rect
+                    x="300"
+                    y="520"
+                    width="34"
+                    height="200"/>
+
+                <rect
+                    x="340"
+                    y="470"
+                    width="26"
+                    height="250"/>
+
+                <rect
+                    x="372"
+                    y="550"
+                    width="40"
+                    height="170"/>
+
+                <rect
+                    x="418"
+                    y="500"
+                    width="22"
+                    height="220"/>
+
+                <rect
+                    x="1000"
+                    y="540"
+                    width="30"
+                    height="180"/>
+
+                <rect
+                    x="1035"
+                    y="490"
+                    width="24"
+                    height="230"/>
+
+                <rect
+                    x="1064"
+                    y="560"
+                    width="36"
+                    height="160"/>
+
+            </g>
+
+
+            <!-- Lights -->
+
+            <g
+                fill="#4fd8ff"
+                opacity="0.5">
+
+                <circle cx="317" cy="540" r="1.4"/>
+                <circle cx="353" cy="500" r="1.4"/>
+                <circle cx="392" cy="580" r="1.4"/>
+                <circle cx="1015" cy="560" r="1.4"/>
+                <circle cx="1047" cy="520" r="1.4"/>
+
+            </g>
+
+        </svg>
+
+    </div>
+
+
+    <!-- =========================================
+         TOP BAR
+    ========================================== -->
+
+    <div class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <img
+                    src="/dvc-logo.png"
+                    alt="DVC logo">
+
+            </div>
+
+            <div class="brand-text">
+
+                <div class="title">
+                    Asset Lookup
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FIXED DASHBOARD LINK -->
+
+        <a
+            href="/dashboard.html"
+            class="back-link">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+
+                <path d="M19 12H5"/>
+                <path d="M12 19l-7-7 7-7"/>
+
+            </svg>
+
+            Back to Dashboard
+
+        </a>
+
+    </div>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <div class="content">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="page-head">
+
+            <h1>
+                Search Device
+            </h1>
+
+            <p>
+                Look up any device by IP address, device name,
+                location, or device type — results update instantly
+            </p>
+
+        </div>
+
+
+        <!-- =====================================
+             SEARCH PANEL
+        ====================================== -->
+
+        <div class="search-panel">
+
+            <div class="search-bar">
+
+                <svg
+                    class="search-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"/>
+
+                    <path
+                        d="m21 21-4.3-4.3"/>
+
+                </svg>
+
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by IP address, device type..."
+                    autofocus>
+
+
+                <button
+                    class="clear-btn"
+                    id="clearBtn"
+                    type="button"
+                    aria-label="Clear search">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round">
+
+                        <path d="M18 6 6 18"/>
+                        <path d="M6 6l12 12"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH HINTS -->
+
+            <div class="search-hints">
+
+                <span class="hint-label">
+                    Try:
+                </span>
+
+                <span
+                    class="hint-chip"
+                    data-query="192.168.5.1">
+
+                    192.168.5.1
+
+                </span>
+
+                <span
+                    class="hint-chip"
+                    data-query="Firewall">
+
+                    Firewall
+
+                </span>
+
+                <span
+                    class="hint-chip"
+                    data-query="Server Room">
+
+                    Server Room
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             RESULTS COUNT
+        ====================================== -->
+
+        <div class="results-meta">
+
+            <span id="resultsCount">
+                Showing <strong>all</strong> devices
+            </span>
+
+        </div>
+
+
+        <!-- =====================================
+             DEVICE TABLE
+        ====================================== -->
+
+        <div class="panel">
+
+            <div class="table-scroll">
+
+                <table id="deviceTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Device
+                            </th>
+
+                            <th>
+                                IP Address
+                            </th>
+
+                            <th>
+                                MAC Address
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tableBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =================================
+                 EMPTY STATE
+            ================================== -->
+
+            <div
+                class="empty-state"
+                id="emptyState"
+                style="display:none;">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"/>
+
+                    <path
+                        d="m21 21-4.3-4.3"/>
+
+                </svg>
+
+                <h3>
+                    No devices found
+                </h3>
+
+                <p>
+                    Try a different IP address,
+                    device type, or location.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="/search-device.js"></script>
+
+</body>
+
+</html>
+```
